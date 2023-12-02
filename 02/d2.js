@@ -6,7 +6,7 @@ async function main() {
   let totalOfValidGames = 0;
 
   for await (const line of rl) {
-    totalOfValidGames += getValidGameNumberP2(line);
+    totalOfValidGames += getValidGameNumberP1(line);
   }
 
   console.log({ totalOfValidGames });
@@ -40,23 +40,23 @@ function getValidGameNumberP1(line) {
 
       switch (cubeColor) {
         case "red":
-          redCubes -= cubeCount;
+          if (redCubes < cubeCount) {
+            isValid = false;
+            break mainLoop;
+          }
           break;
         case "green":
-          greenCubes -= cubeCount;
+          if (greenCubes < cubeCount) {
+            isValid = false;
+            break mainLoop;
+          }
           break;
         case "blue":
-          blueCubes -= cubeCount;
+          if (blueCubes < cubeCount) {
+            isValid = false;
+            break mainLoop;
+          }
           break;
-      }
-
-      if (redCubes < 0 || greenCubes < 0 || blueCubes < 0) {
-        isValid = false;
-        break mainLoop;
-      } else {
-        redCubes = 12;
-        greenCubes = 13;
-        blueCubes = 14;
       }
     }
   }
