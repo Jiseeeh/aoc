@@ -40,7 +40,12 @@ async function p2() {
     const intersection = left.filter(value => right.includes(value));
 
     const reduced = right.reduce((acc, curr) => {
-        return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc;
+        if (acc[curr]) {
+            ++acc[curr];
+        } else {
+            acc[curr] = 1;
+        }
+        return acc;
     }, {});
 
     let total = 0;
