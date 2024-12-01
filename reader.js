@@ -7,12 +7,10 @@ const readline = require("readline");
 function getReader(filePath) {
   const fileStream = fs.createReadStream(filePath);
 
-  const rl = readline.createInterface({
+  return readline.createInterface({
     input: fileStream,
     crlfDelay: Infinity,
   });
-
-  return rl;
 }
 
 module.exports = getReader;
