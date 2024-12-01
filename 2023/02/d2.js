@@ -1,4 +1,4 @@
-const getReader = require("../reader.js");
+const getReader = require("../../reader.js");
 
 async function main() {
   const rl = getReader("./input.txt");
